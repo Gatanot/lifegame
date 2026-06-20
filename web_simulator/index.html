@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生命游戏 - Web 仿真器</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <div class="canvas-wrap" id="canvasWrap">
+    <canvas id="gridCanvas"></canvas>
+  </div>
+
+  <div class="sidebar">
+    <h1>生命游戏 <small>v1.0</small></h1>
+
+    <div class="panel">
+      <h3>仿真控制</h3>
+      <div class="btn-row">
+        <button class="btn btn-success" id="btnPlay">▶</button>
+        <button class="btn btn-warning" id="btnStep">⏭</button>
+        <button class="btn btn-danger" id="btnClear">✕ 清空</button>
+      </div>
+      <div class="btn-row" style="margin-top:4px;">
+        <button class="btn btn-sm" id="btnToggleView">🗺 地形</button>
+      </div>
+      <div class="field">
+        <label>速度</label>
+        <input type="range" id="speedSlider" min="30" max="1000" value="200">
+      </div>
+      <div class="stat">
+        <span>代数</span><span id="genDisplay">0</span>
+      </div>
+      <div class="stat">
+        <span>存活数</span><span id="popDisplay">0</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Perlin 噪声</h3>
+      <div class="field"><label>种子</label><input type="number" id="perlinSeed" value="42"><button class="btn btn-sm" id="btnRandSeed" style="margin-left:4px;">🎲</button></div>
+      <div class="field"><label>缩放</label><input type="number" id="perlinScale" value="0.06" step="0.01"></div>
+      <div class="field"><label>阈值</label><input type="number" id="perlinThresh" value="0.05" step="0.01"></div>
+      <div class="field"><label>层数</label><input type="number" id="perlinOct" value="3" min="1" max="8"></div>
+      <button class="btn btn-primary" id="btnGenPerlin">生成地形</button>
+      <div class="field">
+        <label>侵蚀速度</label>
+        <input type="range" id="evoInterval" min="5" max="100" value="20">
+      </div>
+      <div id="terrainLegend" style="margin-top:8px;font-size:10px;display:grid;grid-template-columns:1fr 1fr;gap:2px 8px;"></div>
+    </div>
+
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
